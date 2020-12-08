@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Documents\Technofuturtic\Exercice\Backend\NetAngular2020_ToolsConnection-master\Tools.Connection\Tools.Connection.csproj" />
     <ProjectReference Include="..\DTO\DTO.csproj" />
+    <ProjectReference Include="..\Tools.Connection\Tools.Connection.csproj" />
   </ItemGroup>
 
 </Project>
