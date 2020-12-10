@@ -29,6 +29,9 @@ namespace apiHero
             services.AddControllers()
                 .AddXmlSerializerFormatters()
                 .AddNewtonsoftJson();
+            services.AddCors();
+            //services.AddSingleton<UserService>
+
             //services.AddScoped<>
             //services.AddControllers()
             //        .AddJsonOptions(options =>
@@ -51,6 +54,7 @@ namespace apiHero
             {
                 app.UseDeveloperExceptionPage();
             }
+
 
             app.UseRouting();
 
