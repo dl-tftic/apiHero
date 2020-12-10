@@ -9,6 +9,11 @@ namespace DAO.Repository
 {
     public class TeamRepository : RepositoryBase
     {
+        /// <summary>
+        /// Allow to retrieve all teams by userId
+        /// </summary>
+        /// <param name="userId">id of the user</param>
+        /// <returns>A collection of team objects</returns>
         public IEnumerable<Team> GetByUserId(int userId)
         {
             Command cmd = new Command("SP_GetTeamByUserId", true);
@@ -24,6 +29,11 @@ namespace DAO.Repository
             return teams;
         }
 
+        /// <summary>
+        /// Allow to retrieve a team by it's ID
+        /// </summary>
+        /// <param name="id">Id of the team</param>
+        /// <returns>A team object</returns>
         public Team GetById(int id)
         {
             Command cmd = new Command("SP_GetTeamById", true);
@@ -39,6 +49,11 @@ namespace DAO.Repository
             return team;
         }
 
+        /// <summary>
+        /// Allow to add a team in the DB
+        /// </summary>
+        /// <param name="team">Team object</param>
+        /// <returns>Id inserted</returns>
         public int Insert(Team team)
         {
             /*
