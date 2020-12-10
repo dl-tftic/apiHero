@@ -39,6 +39,19 @@ namespace DAO.Repository
             return team;
         }
 
+        public IEnumerable<Team> GetAll()
+        {
+            Command cmd = new Command("SP_GetTeamAll", true);
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<Team>(cmd, (reader) =>
+                                                new Team
+                                                {
+                                                    Id = (int)reader["Id"],
+                                                    Name = (string)reader["Nom"],
+                                                    UserId = (int)reader["userId"]
+                                                });
+        }
+
         public int Insert(Team team)
         {
             /*

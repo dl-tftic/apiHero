@@ -66,7 +66,7 @@
     <Build Include="Tables\Teams.sql" />
     <Build Include="Tables\Teams_Heroes.sql" />
     <Build Include="Functions\Scalar\SF_GetHeroesContByTeamId.sql" />
-    <Build Include="Stored procedures\SP_AddUser.sql" />
+    <Build Include="Stored procedures\SP_AddUser2.sql" />
     <Build Include="Functions\Scalar\SF_GenerateSalt.sql" />
     <Build Include="Stored procedures\SP_CheckPasswordUser.sql" />
     <Build Include="Stored procedures\SP_GetUserById.sql" />
@@ -74,6 +74,8 @@
     <Build Include="Stored procedures\SP_GetTeamById.sql" />
     <Build Include="Stored procedures\SP_AddHeroInTeam.sql" />
     <Build Include="Stored procedures\SP_GetHeroesByTeamId.sql" />
+    <Build Include="Stored procedures\SP_GetUserAll.sql" />
+    <Build Include="Stored procedures\SP_GetTeamAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="heroDb.xml" />
