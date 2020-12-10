@@ -25,6 +25,21 @@ namespace DAO.Repository
                                                 }).Single();
         }
 
+        public IEnumerable<User> GetAll()
+        {
+            Command cmd = new Command("SP_GetUserAll", true);
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<User>(cmd, (reader) =>
+                                                new User
+                                                {
+                                                    Id = (int)reader["Id"],
+                                                    FirstName = (string)reader["FirstName"],
+                                                    LastName = (string)reader["LastName"],
+                                                    Pseudo = (string)reader["Pseudo"],
+                                                    Password = (string)reader["Password"]
+                                                });
+        }
+
         public int Insert(User user)
         {
             /*
@@ -34,13 +49,13 @@ namespace DAO.Repository
 	                @Password nvarchar(16) 
             */
             
-            Command cmd = new Command("SP_AddUser", true);
+            Command cmd = new Command("SP_AddUser2", true);
             cmd.AddParameter("FirstName", user.FirstName);
             cmd.AddParameter("LastName", user.LastName);
             cmd.AddParameter("Pseudo", user.Pseudo);
             cmd.AddParameter("Password", user.Password);
             Connection conn = new Connection(this.connectionString);
-            return (int)(conn.ExecuteScalar(cmd));
+            return (int)(decimal)(conn.ExecuteScalar(cmd));
         }
 
         public int CheckPassword(string pseudo, string password)
