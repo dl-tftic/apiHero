@@ -22,18 +22,27 @@ namespace apiHero.Controllers
             _userService = new UserService();
         }
 
+        /// <summary>
+        /// Allow to add a user in DB 
+        /// </summary>
+        /// <param name="value">A user object</param>
+        /// <returns>Id of the insertion in DB</returns>
         [HttpPost]
         public int Register([FromBody] DAO.Models.User value)
         {
             return _userService.Insert(value);
         }
         
+        /// <summary>
+        /// Allow to get details of a user
+        /// </summary>
+        /// <param name="id">Id of the user</param>
+        /// <returns>A user object</returns>
         [HttpGet("{id}")]
-        public string Details(int id)
+        public DAO.Models.User Details(int id)
         {
             
-            DAO.Models.User dao = this._userService.Get(id);
-            return JsonConvert.SerializeObject(dao);
+             return this._userService.Get(id);
         }
 
         [HttpGet]

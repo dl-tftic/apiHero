@@ -25,16 +25,21 @@ namespace apiHero.Controllers
         }
 
         /// <summary>
-        /// 
+        /// GetByUserId allow to retrieve all Teams by an user id
         /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
+        /// <param name="userId">Id of an user</param>
+        /// <returns>Ienumerable of Team</returns>
         [HttpGet("{userId}")]
         public IEnumerable<DAO.Models.Team> GetByUserId(int userId)
         {   
             return this._teamService.GetByUserId(userId);
         }
 
+        /// <summary>
+        /// GetById allow to retrieve a team by it's Id
+        /// </summary>
+        /// <param name="id">Id of Team</param>
+        /// <returns>A Team object</returns>
         [HttpGet("{id}")]
         public DAO.Models.Team GetById(int id)
         {
@@ -51,6 +56,11 @@ namespace apiHero.Controllers
             return this._teamService.GetAll();
         }
 
+        /// <summary>
+        /// Allow to add a Team ind DB
+        /// </summary>
+        /// <param name="team">A Team object</param>
+        /// <returns>Id of the insertion in DB</returns>
         [HttpPost]
         public int Create([FromBody] Team team)
         {
@@ -61,6 +71,17 @@ namespace apiHero.Controllers
             return this._teamService.Insert(team);
         }
 
+        /// <summary>
+        /// Allow to add a Hero to a Team
+        /// </summary>
+        /// <param name="body">
+        ///     a JSON structured like the following : 
+        ///     {
+        ///     "teamId":  "1",
+        ///     "heroId": "715"
+        ///     }
+        /// </param>
+        /// <returns>Id of the insertion in DB</returns>
         [HttpPost]
         public int AddHero([FromBody] JObject body)
         {
