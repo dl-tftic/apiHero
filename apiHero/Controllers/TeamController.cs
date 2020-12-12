@@ -24,19 +24,21 @@ namespace apiHero.Controllers
             _teamService = new TeamsService();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("{userId}")]
-        public string GetByUserId(int userId)
+        public IEnumerable<DAO.Models.Team> GetByUserId(int userId)
         {   
-            IEnumerable<DAO.Models.Team> dao = this._teamService.GetByUserId(userId);
-            return JsonConvert.SerializeObject(dao);
+            return this._teamService.GetByUserId(userId);
         }
 
         [HttpGet("{id}")]
         public DAO.Models.Team GetById(int id)
         {
-            // DAO.Models.Team
             return this._teamService.GetById(id);
-            //return this._teamRepository.GetById(id).toDAO();
         }
 
         /// <summary>
@@ -46,7 +48,6 @@ namespace apiHero.Controllers
         [HttpGet()]
         public IEnumerable<DAO.Models.Team> GetAll()
         {
-            // DAO.Models.Team
             return this._teamService.GetAll();
         }
 
@@ -57,7 +58,6 @@ namespace apiHero.Controllers
              * How to post via postman 
              * https://www.c-sharpcorner.com/article/how-to-use-postman-with-asp-net-core-web-api-testing/
             */
-            //return this._teamService.Insert(new Team { Name = name });
             return this._teamService.Insert(team);
         }
 
