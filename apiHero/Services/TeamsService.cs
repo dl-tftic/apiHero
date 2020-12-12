@@ -46,6 +46,19 @@ namespace apiHero.Services
             //return daos;
         }
 
+        public IEnumerable<DAO.Models.Team> GetAll()
+        {
+            TeamHeroesService ths = new TeamHeroesService();
+
+            IEnumerable<DTO.Models.Team> dtos = _repo.GetAll();
+            foreach (DTO.Models.Team dto in dtos)
+            {
+                DAO.Models.Team t = dto.toDAO();
+                t.Heroes = ths.GetByTeamId(t.Id).ToArray();
+                yield return t;
+            }
+        }
+
         public DAO.Models.Team GetById(int id)
         {
             TeamHeroesService ths = new TeamHeroesService();

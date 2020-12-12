@@ -39,6 +39,17 @@ namespace apiHero.Controllers
             //return this._teamRepository.GetById(id).toDAO();
         }
 
+        /// <summary>
+        /// GetAll function allow to retrieve all Teams independently of the id or user id
+        /// </summary>
+        /// <returns>Ienumerable of Team</returns>
+        [HttpGet()]
+        public IEnumerable<DAO.Models.Team> GetAll()
+        {
+            // DAO.Models.Team
+            return this._teamService.GetAll();
+        }
+
         [HttpPost]
         public int Create([FromBody] Team team)
         {
