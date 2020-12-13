@@ -1,0 +1,8 @@
+<nav>
+    <ul>
+        <li><a routerLink="/acceuil">Acceuil</a></li>
+        <li *ngIf="showRegister"><a routerLink="/register">Register</a></li>
+        <li><a routerLink="/membre">Membre</a></li>
+        <app-login></app-login>
+    </ul>
+</nav>

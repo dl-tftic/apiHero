@@ -1,0 +1,36 @@
+<div>
+    <input type="text" name="teamName" id="teamName" (dragover)="allowDrop($event)" (drop)="drop($event)">
+    <input type="button" value="Create team">
+    <hr>
+    <form [formGroup]="formSearch" (ngSubmit)="SearchHero()">
+        <label for="in_heroSearch">
+            <input type="text" name="in_heroSearch" id="in_heroSearch" formControlName='in_heroSearch'>
+        </label>
+        <input type="submit" value="Search">
+    </form>
+    <input type="button" value="Refresh" (click)="refresh()">
+</div>
+
+<div id="select" *ngIf=(user.currentUser.connecte)>
+    <hr>
+        <select #selectT (change)="selectTeam(selectT)">
+            <option value="doNothing" >----------------------</option>option>
+            <option value="AddTeam">Ajouter équipe</option>
+            <option [value]="team.name" *ngFor="let team of userTeams">{{team.name}}</option>
+        </select>
+</div>
+
+<h3>List des héros</h3>
+<div id="container">
+    <article *ngFor="let h of heroes">
+        <div draggable="true" (dragstart)="drag($event)" id={{h.name}}>
+            <h5>{{h.name}}</h5>
+            <img src="{{h.image.url}}" alt="{{h.name}}" width="80px" draggable="false">
+            <div hidden>
+                <span >Id : {{h.id}}</span>
+                <span >Intelligence{{h.powerstats.intelligence}}</span>
+                <SPan>Mesure : {{h.appearance.height[1]}}</SPan>
+            </div>
+        </div>
+    </article>
+</div>
