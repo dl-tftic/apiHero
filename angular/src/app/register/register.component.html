@@ -1,0 +1,28 @@
+<h3>Formulaire d'enregistrement</h3>
+<form [formGroup]="form" (ngSubmit)="register()">
+    <label for="Name">Name
+        <input type="text" name="Name" id="Name" formControlName="Name">
+    </label>
+        <div *ngIf="form.get('Name').invalid && (form.touched || form.dirty)" class="val-error">Nom non valide</div>
+    <label for="FirstName">FirstName
+        <input type="text" name="FirstName" id="FirstName" formControlName="FirstName">
+    </label>
+        <div *ngIf="form.get('FirstName').invalid && (form.touched || form.dirty)" class="val-error">FirstName non valide</div>
+    <label for="Pseudo">Pseudo
+        <input type="text" name="Pseudo" id="Pseudo" formControlName="Pseudo">
+    </label>
+        <div *ngIf="form.get('Pseudo').invalid  && (form.touched || form.dirty)" class="val-error">Pseudo non valide</div>
+    <label for="Password">Password
+        <input type="password" name="Password" id="Password" formControlName="Password">
+    </label>
+    <label for="ConfirmPassword">ConfirmPassword
+        <input type="password" name="ConfirmPassword" id="ConfirmPassword" formControlName="ConfirmPassword">
+    </label>
+    <div *ngIf="form.errors?.showError  && (form.touched || form.dirty)" class="val-error">Mot de passe non valide</div>
+    <label for="">
+        <input type="submit" [disabled]="form.invalid" value="Submit">
+    </label>
+
+    <!-- {{form.value | json}} -->
+</form>
+

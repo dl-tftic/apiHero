@@ -1,0 +1,16 @@
+<div *ngIf="showIsConnected">
+    <span>Bonjour {{userService.currentUser.pseudo}}</span>
+    <button (click)="logout()">Se déconnecter</button>
+</div>
+<div *ngIf="!showIsConnected" >
+    <form [formGroup]="form">
+        <label for="lg_pseudo">
+            <input type="text" name="lg_pseudo" id="lg_pseudo" formControlName="lg_pseudo" placeholder="pseudo">
+        </label>
+        <label for="lg_pwd">
+            <input type="password" name="lg_pwd" id="lg_pwd" formControlName="lg_pwd" placeholder="password">
+        </label>
+        <button (click)="login()" [disabled]="form.invalid">Se connecter</button>
+    </form>
+    
+</div>
