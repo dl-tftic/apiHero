@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>apiHero</name>
+    </assembly>
+    <members>
+        <member name="T:apiHero.Controllers.TeamController">
+            <summary>
+            Team controller
+            </summary>
+        </member>
+        <member name="M:apiHero.Controllers.TeamController.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:apiHero.Controllers.TeamController.GetByUserId(System.Int32)">
+            <summary>
+            GetByUserId allow to retrieve all Teams by an user id
+            </summary>
+            <param name="userId">Id of an user</param>
+            <returns>Ienumerable of Team</returns>
+        </member>
+        <member name="M:apiHero.Controllers.TeamController.GetById(System.Int32)">
+            <summary>
+            GetById allow to retrieve a team by it's Id
+            </summary>
+            <param name="id">Id of Team</param>
+            <returns>A Team object</returns>
+        </member>
+        <member name="M:apiHero.Controllers.TeamController.GetAll">
+            <summary>
+            GetAll function allow to retrieve all Teams independently of the id or user id
+            </summary>
+            <returns>Ienumerable of Team</returns>
+        </member>
+        <member name="M:apiHero.Controllers.TeamController.Create(DAO.Models.Team)">
+            <summary>
+            Allow to add a Team ind DB
+            </summary>
+            <remarks>
+            Sample request:
+                
+                POST API/create
+                {
+                    "name": "team D",
+                    "userid": 3
+                }
+            </remarks>
+            <param name="team">A Team object</param>
+            <returns>Id of the insertion in DB</returns>
+        </member>
+        <member name="M:apiHero.Controllers.TeamController.AddHero(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Allow to add a Hero to a Team
+            </summary>
+            <param name="body">
+                a JSON structured like the following : 
+                {
+                    "teamId":  "1",
+                    "heroId": "715"
+                }
+            </param>
+            <returns>Id of the insertion in DB</returns>
+        </member>
+        <member name="T:apiHero.Controllers.UserController">
+            <summary>
+            User controller
+            </summary>
+        </member>
+        <member name="M:apiHero.Controllers.UserController.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:apiHero.Controllers.UserController.Register(DAO.Models.User)">
+            <summary>
+            Allow to add a user in DB 
+            </summary>
+            <param name="user">A user object</param>
+            <returns>Id of the insertion in DB</returns>
+        </member>
+        <member name="M:apiHero.Controllers.UserController.Details(System.Int32)">
+            <summary>
+            Allow to get details of a user
+            </summary>
+            <param name="id">Id of the user</param>
+            <returns>A user object</returns>
+        </member>
+        <member name="M:apiHero.Controllers.UserController.Get">
+            <summary>
+            Welcome message entry (for testing)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:apiHero.Services.TeamsService">
+            <summary>
+            Team Service
+            </summary>
+        </member>
+        <member name="M:apiHero.Services.TeamsService.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:apiHero.Services.TeamsService.Insert(DAO.Models.Team)">
+            <summary>
+            The service use the repo to add a team in DB
+            </summary>
+            <param name="team">a Team object</param>
+            <returns>Id of the insertion in DB</returns>
+        </member>
+        <member name="M:apiHero.Services.TeamsService.AddHero(System.Int32,System.Int32)">
+            <summary>
+            The service use the repo to add a Hero in a Team
+            </summary>
+            <param name="teamId">Id of the team</param>
+            <param name="heroId">Id of the Hero</param>
+            <returns>Id of the insertion in DB</returns>
+        </member>
+        <member name="M:apiHero.Services.TeamsService.GetByUserId(System.Int32)">
+            <summary>
+            To get TEams by user ID
+            </summary>
+            <param name="userId">ID of the user</param>
+            <returns>All Team object retated to user ID</returns>
+        </member>
+        <member name="M:apiHero.Services.TeamsService.GetAll">
+            <summary>
+            To get all Teams
+            </summary>
+            <returns>All teams in DB</returns>
+        </member>
+        <member name="M:apiHero.Services.TeamsService.GetById(System.Int32)">
+            <summary>
+            To get a Team by it's ID
+            </summary>
+            <param name="id">Id of the Team</param>
+            <returns>a Team object</returns>
+        </member>
+        <member name="T:apiHero.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:apiHero.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:apiHero.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:apiHero.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:apiHero.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>

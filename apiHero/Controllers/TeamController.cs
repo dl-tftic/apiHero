@@ -13,12 +13,18 @@ using DAO.Models;
 
 namespace apiHero.Controllers
 {
+    /// <summary>
+    /// Team controller
+    /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class TeamController : ControllerBase
     {
         private TeamsService _teamService;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public TeamController()
         {
             _teamService = new TeamsService();
@@ -59,6 +65,15 @@ namespace apiHero.Controllers
         /// <summary>
         /// Allow to add a Team ind DB
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///     
+        ///     POST API/create
+        ///     {
+        ///         "name": "team D",
+        ///         "userid": 3
+        ///     }
+        /// </remarks>
         /// <param name="team">A Team object</param>
         /// <returns>Id of the insertion in DB</returns>
         [HttpPost]
@@ -77,8 +92,8 @@ namespace apiHero.Controllers
         /// <param name="body">
         ///     a JSON structured like the following : 
         ///     {
-        ///     "teamId":  "1",
-        ///     "heroId": "715"
+        ///         "teamId":  "1",
+        ///         "heroId": "715"
         ///     }
         /// </param>
         /// <returns>Id of the insertion in DB</returns>

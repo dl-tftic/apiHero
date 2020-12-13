@@ -10,12 +10,18 @@ using Newtonsoft.Json;
 
 namespace apiHero.Controllers
 {
+    /// <summary>
+    /// User controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private UserService _userService;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public UserController()
         {
             
@@ -25,12 +31,12 @@ namespace apiHero.Controllers
         /// <summary>
         /// Allow to add a user in DB 
         /// </summary>
-        /// <param name="value">A user object</param>
+        /// <param name="user">A user object</param>
         /// <returns>Id of the insertion in DB</returns>
         [HttpPost]
-        public int Register([FromBody] DAO.Models.User value)
+        public int Register([FromBody] DAO.Models.User user)
         {
-            return _userService.Insert(value);
+            return _userService.Insert(user);
         }
         
         /// <summary>
@@ -45,6 +51,10 @@ namespace apiHero.Controllers
              return this._userService.Get(id);
         }
 
+        /// <summary>
+        /// Welcome message entry (for testing)
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public string Get()
         {
